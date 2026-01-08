@@ -1,85 +1,109 @@
 <header>
-
-	<div class = "left">
-		<a href = "/" class="logo">
-			<img src = "/luglogo.png"alt="logo">
-			<span>The LUGVITC Blog</span>
-		</a>
-		<nav>
-			<a href = "https://www.lugvitc.net" >cd ~</a>
-			<a href = "/blog">cd /</a>
-			<a href = "/contact">ping port : 80</a>
-
-		</nav>
-		<button aria-label = "Toggle theme"><img src="Sun.png"></button>
-	</div>
-	
-
-
-
+	<a href="/" class="logo">
+		<img src="/luglogo.png" alt="logo">
+		<span>The LUGVITC Blog</span>
+	</a>
+	<nav>
+		<a href="/">cd ~</a>
+		<a href="https://www.lugvitc.net">cd /</a>
+		<a href="https://lugvitc.net/#/contact">ping port:80</a>
+	</nav>
+	<button id="toggle-theme" aria-label="Toggle theme"><img src="/Sun.svg" alt="Toggle theme"></button>
 </header>
 
+<script is:inline>
+	const theme = (() => {
+		if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
+			return localStorage.getItem('theme');
+		}
+		if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+			return 'dark';
+		}
+		return 'light';
+	})();
+
+	const updateIcon = (theme) => {
+		const icon = document.querySelector('button#toggle-theme img');
+		if (icon) {
+			icon.src = theme === 'dark' ? '/Sun.svg' : '/Moon.svg';
+		}
+	};
+
+	if (theme === 'dark') {
+		document.documentElement.classList.add('dark');
+	} else {
+		document.documentElement.classList.remove('dark');
+	}
+
+	updateIcon(theme);
+	window.localStorage.setItem('theme', theme);
+
+	const handleToggleClick = () => {
+		const element = document.documentElement;
+		element.classList.add("disable-transitions");
+		element.classList.toggle("dark");
+
+		const isDark = element.classList.contains("dark");
+		const newTheme = isDark ? "dark" : "light";
+		localStorage.setItem("theme", newTheme);
+		updateIcon(newTheme);
+
+		window.setTimeout(() => {
+			element.classList.remove("disable-transitions");
+		}, 0);
+	}
+
+	document.addEventListener('DOMContentLoaded', () => {
+		document.getElementById('toggle-theme')?.addEventListener('click', handleToggleClick);
+	});
+</script>
+
 <style>
-
-	header{
-
+	header {
 		display:flex;
-		align-items:center;
-		justify-content:space-between;
-		padding:0.7rem 1.3rem;
-		border-bottom:1px solid #333;
-		font-family:monospace;
-		background-color: #000000;
-		color: #eaeaea;
-		
+		align-items: center;
+		gap: 2rem;
+		padding:0.1rem 0.5rem;
+		border-bottom:4px solid var(--header-border);
+		color: white;
 	}
-	.left{
-		display:flex;
-		align-items:center;
-		gap:12.5em;
-		
-	}
-	.logo{
+
+	.logo {
 		display: flex;
 		align-items: center;
-		gap:1.2rem;
 		text-decoration:none;
 		color:inherit;
+		padding: 4px;
 	}
-	.logo img{
-		height:85px;
-		width:auto;
+	.logo img {
+		height: 80px;
+		width: auto;
 	}
-	.logo span{
-		font-family: 'Space Mono',monospace;
+
+	.logo span {
 		font-weight: 400;
-		font-size: 25px;
-		letter-spacing: 0.08em;
+		letter-spacing: 0.05em;
 		line-height: 1;
 		border:2px solid #444;
-		padding:15px;
+		padding:12px;
 		background:#3B4252;
+		box-shadow: 6px 6px var(--box-shadow);
+	}
 
-		box-shadow:
-		8px 8px 0 #636B7B,                 /* 👈 back face */
-		0 0 0 1px rgba(0,0,0,0.4); 
-	}
-	nav{
+	nav {
+		width: auto;
 		display:flex;
-		gap:2.9rem
-		
+		gap:2rem;
+		margin-left: auto;
 	}
-	nav a{
+
+	nav a {
 		text-decoration:none;
-		font-size:1.5rem;
-		color: #eaeaea;
-		padding : 1rem 1.25rem;
-		border : 2px solid #444;
-		border-radius: 1px;
-		box-shadow:
-		8px 8px 0 #636B7B,                 
-		0 0 0 1px rgba(0,0,0,0.4); 
+		color: inherit;
+		padding: 0.5rem 2.5rem;
+		box-shadow: 6px 6px var(--box-shadow);
 	}
+
 	nav a:nth-child(1) {
 		background: #FF7800; 
 	}
@@ -91,44 +115,35 @@
 	nav a:nth-child(3) {
 		background: #00C764; 
 	}
-	button{
 
+	#toggle-theme {
 		display:flex;
 		align-items:center;
-		border:2px solid #444;
-		border-radius:1px;
-		padding:10px;
+		justify-content: center;
+		padding:0.5rem 0.5rem;
 		background: #FF7800;
-		box-shadow:
-		8px 8px 0 #636B7B,                 
-		0 0 0 1px rgba(0,0,0,0.4);
+		box-shadow: 6px 6px var(--box-shadow);
+		margin-right: 12px;
+		border: none;
+		border-radius: 0;
+		cursor: pointer;
 	}
-		.links a,
-	header nav a ,button{
-	transition: 
+
+	#toggle-theme img {
+		width: 32px;
+		height: 32px;
+	}
+
+	header nav a,
+	#toggle-theme {
+	transition:
 		transform 0.15s ease-out,
 		box-shadow 0.15s ease-out;
 	}
-		.links a:hover,
-		header nav a:hover ,button:hover{
-	transform: translate(2px, 2px);
-	box-shadow:
-		4px 4px 0 #636B7B,
-		0 0 0 1px rgba(0,0,0,0.4);
-		}
-		.links a:active,
-	header nav a:active {
-	transform: translate(3px, 3px);
-	box-shadow:
-		3px 3px 0 #636B7B,
-		0 0 0 1px rgba(0,0,0,0.4);
-	}
 
-	.links a,
-	header nav a,
-	button {
-	cursor: pointer;
+	header nav a:hover, #toggle-theme:hover {
+		transform: translate(1px, 1px);
+		box-shadow: 4px 4px var(--box-shadow);
 	}
-
 
 </style>
