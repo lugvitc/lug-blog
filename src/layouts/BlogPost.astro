@@ -1,28 +1,180 @@
-
 ---
-import Header from "../components/Header.astro"
-import Footer from "../components/Footer.astro"
+import type { CollectionEntry } from 'astro:content';
+import BaseHead from '../components/BaseHead.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { SITE_TITLE } from '../consts';
+import { ClientRouter } from 'astro:transitions';
+import { Image } from 'astro:assets';
+
+type Props = CollectionEntry<'blog'>['data'] & {
+	headings: { depth: number; slug: string; text: string }[];
+};
+
+const { title, description, pubDate, updatedDate, heroImage, headings,author } = Astro.props;
 ---
 
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="en">
 	<head>
-		<meta charset="utf-8" />
+		<ClientRouter />
+		<BaseHead title={title || SITE_TITLE} description={description || ''} image={heroImage} />
+		<style>
+			main {
+				width: 100%;
+				max-width: 100%;
+				padding: 0;
+				margin: 0;
+			}
+			.blog-container {
+				display: grid;
+				grid-template-columns: 300px 1fr;
+				gap: 2rem;
+				align-items: start;
+			}
+			
+			.sidebar {
+				display: flex;
+				flex-direction: column;
+				gap: 2rem;
+				padding: 2rem;
+				position: sticky;
+				top: 2rem;
+				height: fit-content;
+			}
+			.back-link {
+				display: inline-block;
+				background-color: #FF7800;
+				color: black;
+				text-decoration: none;
+				padding: 0.2rem 0.5rem;
+				border: 2px solid black;
+				font-family: monospace;
+				font-weight: bold;
+				width: fit-content;
+				box-shadow: 4px 4px 0 0 var(--box-shadow);
+				transform: translate(1px, 1px);
+			}
+			.back-link:active {
+				transform: translate(2px, 2px);
+			}
+			.sidebar-title {
+				font-size: 2.5rem;
+				color: var(--heading-color);
+				line-height: 1.1;
+				font-family: 'Space Mono', monospace;
+				margin: 0;
+			}
+			.author-block {
+				display: flex;
+				align-items: center;
+				gap: 1rem;
+			}
+			.author-avatar {
+				width: 50px;
+				height: 50px;
+				background-color: white;
+				box-shadow: 4px 4px 0 0 var(--box-shadow);
+			}
+			.description {
+				font-size: 0.9rem;
+				line-height: 1.4;
+				
+			}
+			.toc-title {
+				font-weight: bold;
+				margin-bottom: 0.5rem;
+				display: block;
+			}
+			.toc-list {
+				list-style: none;
+				padding: 0;
+				margin: 0;
+				font-size: 0.9rem;
+			}
+			.toc-list li {
+				margin-bottom: 0.5rem;
+			}
+			.toc-list a {
+				text-decoration: none;
+				color: var(--text-color);
+			}
+			.toc-list a:hover {
+				color: var(--accent);
+			}
+
+			.content-area {
+				border-left: 4px solid var(--header-border);
+				padding: 2rem;
+			}
+			
+			.hero-image {
+				width: 100%;
+				border: 2px solid black;
+				margin-bottom: 2rem;
+				display: block;
+				height: auto;
+			}
+
+			.content {
+				padding: 0 2rem;
+			}
+
+			@media (max-width: 768px) {
+				.blog-container {
+					grid-template-columns: 1fr;
+				}
+				.sidebar {
+					position: static;
+					margin-bottom: 2rem;
+					border-bottom: 1px solid var(--gray);
+					padding-bottom: 2rem;
+				}
+			}
+		</style>
 	</head>
 
 	<body>
 		<Header />
-
 		<main>
+			<div class="blog-container">
+				<aside class="sidebar">
+					<a href="/" class="back-link">cd ..</a>
+					
+					<h1 class="sidebar-title">{title}</h1>
+					<div class="author-block">
+						<div class="author-avatar" title={author}></div>
+						<span>By {author}</span>
+					</div>
 
-			<slot />
+					<div class="description">
+						{description}
+					</div>
 
+					{headings && headings.length > 0 && (
+						<nav class="toc">
+							<span class="toc-title">TOC:</span>
+							<ul class="toc-list">
+								{headings.map((heading) => (
+									(heading.depth <= 3) && (
+									<li style={`padding-left: ${(heading.depth - 2) * 1}rem`}>
+										<a href={`#${heading.slug}`}>• {heading.text}</a>
+									</li>
+									)
+								))}
+							</ul>
+						</nav>
+					)}
+				</aside>
+
+				<article class="content-area" transition:animate="slide">
+					{heroImage && <Image src={heroImage} alt="" class="hero-image" />}
+					<div class="content">
+						<slot />
+					</div>
+				</article>
+			</div>
 		</main>
-
-
 		<Footer />
-
-
 	</body>
-
 </html>

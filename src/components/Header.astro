@@ -1,4 +1,8 @@
-<header>
+---
+import { ClientRouter } from 'astro:transitions';
+---
+<header transition:persist="none">
+	<ClientRouter />
 	<a href="/" class="logo">
 		<img src="/luglogo.png" alt="logo">
 		<span>The LUGVITC Blog</span>

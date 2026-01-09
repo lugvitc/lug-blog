@@ -1,5 +1,6 @@
 ---
 title: 'Fourth post'
+author: 'Tux'
 description: 'Lorem ipsum dolor sit amet'
 pubDate: 'Jul 23 2022'
 heroImage: './blog-placeholder-2.jpg'
