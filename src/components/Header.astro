@@ -64,10 +64,20 @@ import { ClientRouter } from 'astro:transitions';
 		}
 	};
 
-	document.addEventListener("astro:page-load", () => {
-		attachToggle();
-		applyTheme(getTheme());
+	
+	if (!window.themeListenersAttached) {
+		document.addEventListener("astro:after-swap", () => {
+			applyTheme(getTheme());
+			updateIcon(getTheme());
 	});
+
+	document.addEventListener("astro:page-load", () => {
+			attachToggle();
+			applyTheme(getTheme());
+	});
+	
+	window.themeListenersAttached = true;
+	}
 </script>
 
 <style>
@@ -78,6 +88,7 @@ import { ClientRouter } from 'astro:transitions';
 		padding:0.1rem 0.5rem;
 		border-bottom:4px solid var(--header-border);
 		color: white;
+		background: var(--header-bg);
 	}
 
 	.logo {
@@ -96,9 +107,9 @@ import { ClientRouter } from 'astro:transitions';
 		font-weight: 400;
 		letter-spacing: 0.05em;
 		line-height: 1;
-		border:2px solid #444;
+		border:2px solid var(--color-border);
 		padding:12px;
-		background:#3B4252;
+		background:var(--gray);
 		box-shadow: 6px 6px var(--box-shadow);
 	}
 
@@ -117,15 +128,15 @@ import { ClientRouter } from 'astro:transitions';
 	}
 
 	nav a:nth-child(1) {
-		background: #FF7800; 
+		background: var(--color-orange); 
 	}
 
 	nav a:nth-child(2) {
-		background: #00A9F3; 
+		background: var(--color-blue); 
 	}
 
 	nav a:nth-child(3) {
-		background: #00C764; 
+		background: var(--color-green); 
 	}
 
 	#toggle-theme {
@@ -133,7 +144,7 @@ import { ClientRouter } from 'astro:transitions';
 		align-items:center;
 		justify-content: center;
 		padding:0.5rem 0.5rem;
-		background: #FF7800;
+		background: var(--color-orange);
 		box-shadow: 6px 6px var(--box-shadow);
 		margin-right: 12px;
 		border: none;

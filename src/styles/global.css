@@ -1,5 +1,5 @@
 :root {
-	--accent: #2337ff;
+	--accent: #fdfdfd;
 	--accent-dark: #000d8a;
 	--black: 0, 0, 0;
 	--gray: #3b4252;
@@ -7,17 +7,32 @@
 	--gray-dark: 34, 41, 57;
 	--gray-gradient: rgba(var(--gray-light), 50%), #fff;
 	--box-shadow: #000000;
+	--card-box-shadow: var(--box-shadow);
+	--color-orange: #FF7800;
+	--color-blue: #00A9F3;
+	--color-green: #00C764;
+	--color-border: #444;
 	--background-color: #EACB8B26;
-	--text-color: rgb(var(--gray-dark));
+	--text-color: #000000;
+	--heading-color: #050505;
 	--header-border: #000000;
+	--footer-bg: #FFFCF8;
+	--header-bg: #FFFCF8;
+	--card-bg: #3B4252;
+	--card-text-color: #eaeaea;
 }
 
 html.dark {
-	--background-color: #000000;
+	--background-color: #050505;
 	--heading-color: #EACB8B;
+	--footer-bg: #000100;
+	--header-bg: #000100;
 	--text-color: #eaeaea;
-	--header-border: #ffffff;
+	--header-border: #EACB8B;
 	--box-shadow: #636B7B;
+	--card-bg: #2d2d2d;
+	--card-text-color: var(--text-color);
+	--card-box-shadow: #eaca8bc1;
 }
 
 @font-face {
@@ -65,7 +80,7 @@ h4,
 h5,
 h6 {
 	margin: 0 0 0.5rem 0;
-	color: rgb(var(--black));
+	color: var(--heading-color);
 	line-height: 1.2;
 }
 h1 {

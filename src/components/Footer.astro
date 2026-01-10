@@ -9,8 +9,6 @@
 			</a>
 
 			<a href = "/contact">Contact us</a>
-			<a href = "/blog">All Blogs</a>
-
 		</div>
 		<p>
   			© 2025 LUGVITC. All rights reserved.
@@ -22,8 +20,8 @@
 <style>
 	.cen{
 		font-family: monospace;
-		background-color: var(--header-bg);
-		color:#eaeaea;
+		background-color: var(--footer-bg);
+		color:var(--text-color);
 		padding:0.4rem 1.5rem;
 		display:flex;
 		gap:3rem;
@@ -40,13 +38,13 @@
 		font-size: 15px;
 		letter-spacing: 0.08em;
 		line-height: 1;
-		
-		border:1px solid #444;
+		color: var(--accent);
+		border:1px solid var(--color-border);
 		padding:10px;
-		background:#3B4252;
+		background:var(--gray);
 
 		box-shadow:
-				5px 5px 0 #636B7B,
+				5px 5px 0 var(--box-shadow),
 				0 0 0 1px rgba(121, 121, 121, 0.4);
 		}
 
@@ -58,7 +56,7 @@
 	.links a{
 		display:inline-flex;
 		height: 20px;
-		border:2px solid #444;
+		border:2px solid var(--color-border);
 		color:black;
 		font-weight:bold;
 		padding:1rem 1.5rem;
@@ -67,7 +65,7 @@
 
 		font-family: 'Space Mono', monospace;
 		box-shadow:
-		6px 6px 0 #636B7B,                 
+		6px 6px 0 var(--box-shadow),                 
 		0 0 0 1px rgba(0,0,0,0.4); 
 		transition:
 		transform 0.15s ease-out,
@@ -75,14 +73,14 @@
 	}
 
 	a:nth-child(1){
-		background:#00A9F3;
+		background:var(--color-blue);
 
 	}
 	a:nth-child(2){
-		background:#00C764;		
+		background:var(--color-green);		
 	}
 	a:nth-child(3){
-		background:#FF7800;
+		background:var(--color-orange);
 	}
 	.with-arrow{
 		align-items:center;
@@ -99,7 +97,7 @@
 	.links a:hover{
 		 transform: translate(2px, 2px);
 		box-shadow:
-		4px 4px 0 #636B7B,
+		4px 4px 0 var(--box-shadow),
 		0 0 0 1px rgba(0,0,0,0.4);
 	}
 	

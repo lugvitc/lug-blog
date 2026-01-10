@@ -18,11 +18,15 @@ const [latestPost, ...otherPosts] = posts;
         <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
 <style>
 
-    main {width: 960px;}
+    main {
+        width: 960px;
+        background-image: radial-gradient(white 1px, transparent 0);
+        background-repeat: repeat;
+    }
     .card {
-        box-shadow: 7px 7px 0px 0px rgb(var(--black));
+        box-shadow: 7px 7px 0px 0px var(--card-box-shadow);
         transition: transform 0.2s ease;
-        background-color: var(--gray);
+        background-color: var(--card-bg);
     }
     :root{
         --fs-section-title: clamp(1.8rem, 2.6vw, 3.2rem);
@@ -82,10 +86,6 @@ const [latestPost, ...otherPosts] = posts;
     .posts-grid li * {
         transition: 0.2s ease;
     }
-    .posts-grid li a:hover .title,
-    .posts-grid li a:hover .date {
-        color: rgb(var(--accent));
-    }
     .card:hover {
         transform: scale(1.05) ;
     }
@@ -103,8 +103,8 @@ const [latestPost, ...otherPosts] = posts;
     }
 
     ul li .card {
-        box-shadow: 7px 7px 0px 0px rgb(var(--black));
-        background-color: var(--gray);
+        box-shadow: 7px 7px 0px 0px var(--card-box-shadow);
+        background-color: var(--card-bg);
     }
     ul li img {
         margin-bottom: 0.5rem;
@@ -115,22 +115,18 @@ const [latestPost, ...otherPosts] = posts;
     }
     .title {
         margin: 0;
-        color: rgb(var(--black));
+        color: var(--card-text-color);
         line-height: 1;
     }
     .description {
-        color: rgb(var(--black));
+        color: var(--card-text-color);
     }
     .date {
         margin: 0;
-        color: rgb(var(--gray));
+        color: var(--card-text-color);
     }
-    ul li a:hover h4,
-    ul li a:hover .date {
-        color: rgb(var(--accent));
-    }
-    ul a:hover img {
-    }
+    
+
     ul li .card:hover {
         scale: 1.05;
     }
