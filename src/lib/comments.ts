@@ -1,6 +1,7 @@
-import { handleSignInWithGoogle, supabase, getComments, createComment } from './supabase.ts';
+import { handleSignInWithGoogle, supabase, getComments, createComment, handleSignOut } from './supabase.ts';
 
 (window as any).handleSignInWithGoogle = handleSignInWithGoogle;
+(window as any).handleSignOut = handleSignOut;
 (window as any).createComment = async (slug: string, content: string) => {
   if (!content.trim()) {
     alert('Empty comment provided.');
@@ -17,20 +18,23 @@ import { handleSignInWithGoogle, supabase, getComments, createComment } from './
 export async function initComments() {
   const { data: { session } } = await supabase.auth.getSession();
   const signinBtn = document.querySelector('.google-signin') as HTMLElement;
+  const signoutBtn = document.querySelector('.signout-btn') as HTMLElement;
   const commentBox = document.querySelector('.comment-box') as HTMLElement;
 
   if (session) {
-    signinBtn.style.visibility = 'hidden';
+    signinBtn.style.display = 'none';
+    signoutBtn.style.display = 'block';
     commentBox.removeAttribute('disabled');
     commentBox.setAttribute('placeholder', 'Write your comment here...');
   } else {
-    signinBtn.style.visibility = 'visible';
+    signinBtn.style.display = 'block';
+    signoutBtn.style.display = 'none';
     commentBox.setAttribute('disabled', 'true');
     commentBox.setAttribute('placeholder', 'Sign in to add a comment.');
   }
 
   supabase.auth.onAuthStateChange((event) => {
-    if (event === 'SIGNED_IN') location.reload();
+    if (event === 'SIGNED_IN' || event === 'SIGNED_OUT') location.reload();
   });
 
   const comments = await getComments(window.location.pathname.split('/').filter(Boolean).join('/'));

@@ -13,6 +13,11 @@ export async function handleSignInWithGoogle(response: CredentialResponse) {
   })
 }
 
+export async function handleSignOut() {
+  const { error } = await supabase.auth.signOut()
+  if (error) console.error('Error signing out:', error)
+}
+
 export async function getComments(post_slug: string) {
     const { data, error } = await supabase
         .from('comments')
