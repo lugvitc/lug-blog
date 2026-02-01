@@ -15,6 +15,7 @@
     "@supabase/supabase-js": "^2.93.3",
     "@types/google-one-tap": "^1.2.7",
     "astro": "^5.16.6",
+    "gray-matter": "^4.0.3",
     "sharp": "^0.34.3"
   },
   "devDependencies": {
