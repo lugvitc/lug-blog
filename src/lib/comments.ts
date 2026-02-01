@@ -41,7 +41,7 @@ export async function initComments() {
     commentDiv.className = 'comment';
     commentDiv.innerHTML = `
       <div class="avatar">
-        <img src="${comment.profiles?.avatar_url}" alt="${comment.profiles?.name}'s avatar" />
+        <img src="${comment.profiles?.avatar_url}" alt="${comment.profiles?.name}'s avatar" referrerpolicy="no-referrer" />
       </div>
       <div class="comment-content">
         <div class="comment-author">${comment.profiles?.name}</div>
