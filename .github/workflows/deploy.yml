@@ -20,6 +20,15 @@ jobs:
     steps:
       - name: Checkout your repository using git
         uses: actions/checkout@v5
+
+      - name: Create .env file
+        run: |
+          touch .env
+          echo PUBLIC_SUPABASE_URL=${{ secrets.PUBLIC_SUPABASE_URL }} >> .env
+          echo PUBLIC_SUPABASE_ANON_KEY=${{ secrets.PUBLIC_SUPABASE_ANON_KEY }} >> .env
+          echo SUPABASE_AUTH_EXTERNAL_GOOGLE_CLIENT_ID=${{ secrets.SUPABASE_AUTH_EXTERNAL_GOOGLE_CLIENT_ID }} >> .env
+          echo SUPABASE_AUTH_EXTERNAL_GOOGLE_CLIENT_SECRET=${{ secrets.SUPABASE_AUTH_EXTERNAL_GOOGLE_CLIENT_SECRET }} >> .env
+      
       - name: Install, build, and upload your site
         uses: withastro/action@v5
         # with:
