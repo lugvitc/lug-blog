@@ -129,10 +129,14 @@ img {
 	height: auto;
 	border-radius: 8px;
 }
-code {
+:not(pre) > code {
 	padding: 2px 5px;
 	background-color: rgb(var(--gray-light));
 	border-radius: 2px;
+}
+
+html.dark :not(pre) > code {
+	background-color: rgb(var(--gray-dark));
 }
 pre {
 	padding: 1.5em;
