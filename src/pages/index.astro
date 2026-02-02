@@ -10,6 +10,7 @@ const posts = (await getCollection('blog')).sort(
 (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
 );
 const [latestPost, ...otherPosts] = posts;
+const recentPosts = otherPosts.slice(0, 3);
 ---
 
 <!doctype html>
@@ -19,9 +20,12 @@ const [latestPost, ...otherPosts] = posts;
 <style>
 
     main {
-        width: 960px;
+        width: 980px;
         background-image: radial-gradient(white 1px, transparent 0);
         background-repeat: repeat;
+    }
+    section {
+        padding: 20px;
     }
     .card {
         box-shadow: 7px 7px 0px 0px var(--card-box-shadow);
@@ -55,6 +59,10 @@ const [latestPost, ...otherPosts] = posts;
     .description {
         font-size: var(--fs-desc);
         line-height: 1.4;
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
     }
 
     .date {
@@ -117,6 +125,10 @@ const [latestPost, ...otherPosts] = posts;
         margin: 0;
         color: var(--card-text-color);
         line-height: 1;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        width: 100%;
     }
     .description {
         color: var(--card-text-color);
@@ -160,6 +172,7 @@ const [latestPost, ...otherPosts] = posts;
         display: flex;
         flex-direction: column;
         align-items: flex-start;
+        min-width: 0;
     }
 
     /* Other posts - 3 per row */
@@ -224,11 +237,11 @@ const [latestPost, ...otherPosts] = posts;
                         </div>
                     </div>
                 </a>
-                <h3> ALl the past blogs</h3>
-                <!-- Other posts -->
+                <h3> Recent posts</h3>
+                <!-- Other posts (show only 3) -->
                 <ul class="posts-grid">
                     {
-                    otherPosts.map((post) => (
+                    recentPosts.map((post) => (
                     <li>
                         <a href={`/${post.id}/`}>
                             <div class="card">
@@ -248,6 +261,8 @@ const [latestPost, ...otherPosts] = posts;
                     ))
                     }
                 </ul>
+
+                <p><a href="/blogs/">View all blogs</a></p>
 
             </section>
         </main>

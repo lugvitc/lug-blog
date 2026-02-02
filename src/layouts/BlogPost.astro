@@ -7,12 +7,13 @@ import { SITE_TITLE } from '../consts';
 import { ClientRouter } from 'astro:transitions';
 import { Image } from 'astro:assets';
 import Comments from '../components/Comments.astro';
+import FormattedDate from '../components/FormattedDate.astro';
 
 type Props = CollectionEntry<'blog'>['data'] & {
 	headings: { depth: number; slug: string; text: string }[];
 };
 
-const { title, description, pubDate, updatedDate, heroImage, headings,author } = Astro.props;
+const { title, description, pubDate, updatedDate, heroImage, headings,author, authorImage } = Astro.props;
 ---
 
 <!doctype html>
@@ -77,6 +78,18 @@ const { title, description, pubDate, updatedDate, heroImage, headings,author } =
 				height: 50px;
 				background-color: white;
 				box-shadow: 4px 4px 0 0 var(--box-shadow);
+				overflow: hidden;
+				border-radius: 0;
+				display: inline-block;
+			}
+
+			.author-avatar img,
+			.author-avatar picture img {
+				width: 100%;
+				height: 100%;
+				object-fit: cover;
+				display: block;
+				border-radius: 0;
 			}
 			.description {
 				font-size: 0.9rem;
@@ -162,8 +175,20 @@ const { title, description, pubDate, updatedDate, heroImage, headings,author } =
 					<a href="/" class="back-link">cd ..</a>
 					
 					<h1 class="sidebar-title">{title}</h1>
+					<FormattedDate date={pubDate} />
+					<span>{updatedDate ? <span>Updated:</span> <FormattedDate date={updatedDate} /> : ''}</span>
 					<div class="author-block">
-						<div class="author-avatar" title={author}></div>
+						{authorImage ? (
+							typeof authorImage === 'string' ? (
+								<span class="author-avatar">
+									<img src={authorImage} alt={author || 'Author'} />
+								</span>
+							) : (
+								<Image src={authorImage} alt={author || 'Author'} class="author-avatar" />
+							)
+						) : (
+							<div class="author-avatar" title={author}></div>
+						)}
 						<span>By {author}</span>
 					</div>
 
