@@ -3,14 +3,8 @@ import RSSIcon from '../assets/rss.svg';
 ---
 <footer>
 	<div class = "cen">
-		<span class="brand">The LUGVITC Blog</span>
-
-
 		<div class = "links">
-			<a href = "https://lugvitc.net/#/about" target="_blank">
-				About us</span>
-			</a>
-
+			<a href = "https://lugvitc.net/#/about" target="_blank">About us</a>
 			<a href = "https://lugvitc.net/#/contact" target="_blank">Contact us</a>
 			<a href = "/rss.xml" target="_blank">RSS <RSSIcon /></a>
 		</div>
@@ -28,31 +22,16 @@ import RSSIcon from '../assets/rss.svg';
 		color:var(--text-color);
 		padding:0.4rem 1.5rem;
 		display:flex;
-		gap:0.5rem;
+		gap:0.1rem;
 		flex-direction:column;
 		border-top: 4px solid var(--header-border);
-		padding-top:2rem;	
+		padding-top: 2rem;
 	}
-	.brand{
-		align-self: flex-start;
-		font-family: 'Space Mono',monospace;
-		font-weight: 400;
-		font-size: 15px;
-		letter-spacing: 0.08em;
-		line-height: 1;
-		color: var(--accent);
-		border:1px solid var(--color-border);
-		padding:10px;
-		background:var(--gray);
-
-		box-shadow:
-				5px 5px 0 var(--box-shadow),
-				0 0 0 1px rgba(121, 121, 121, 0.4);
-		}
 
 	.links{
-		margin-left:15%;
 		display: flex;
+		justify-content: center;
+		align-items: center;
 		gap: 3rem;
 	}
 	.links a{
@@ -67,7 +46,6 @@ import RSSIcon from '../assets/rss.svg';
 		align-items:center;
 		gap:0.4rem;
 		line-height:1;
-
 		font-family: 'Space Mono', monospace;
 		box-shadow:
 		6px 6px 0 var(--box-shadow),                 
@@ -97,7 +75,7 @@ import RSSIcon from '../assets/rss.svg';
 	    align-self: flex-end;
 	}
 	@media (max-width: 700px) {
-		.cen, .brand{
+		.cen {
 			align-items: center;
 			align-self: center;
 			gap:1rem;
@@ -108,6 +86,11 @@ import RSSIcon from '../assets/rss.svg';
 			flex-direction: column;
 			gap:1rem;
 		}
+
+		.copyright {
+			align-self: center;
+			text-align: center;
+		}
 	}
-	
+
 </style>
