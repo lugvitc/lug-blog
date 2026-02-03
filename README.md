@@ -1,62 +1,114 @@
-# Astro Starter Kit: Blog
+# The LUGVITC Blog
 
-```sh
-pnpm create astro@latest -- --template blog
+The official blog of The Linux Club, VIT Chennai, built with Astro and Supabase
+
+## Tech stack
+
+- Astro 5 + TypeScript
+- Markdown/MDX posts via Content Collections
+- Comments and Authentication (Google OAuth) via Supabase
+
+## Prerequisites
+
+- Node.js
+- pnpm
+
+## Setup
+
+1) Clone the repository
+
+```bash
+cd <folder of your choice on your PC>
+git clone https://github.com/lugvitc/lug-blog.git
 ```
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+2) Install dependencies:
 
-Features:
+```bash
+pnpm install
+```
 
-- ✅ Minimal styling (make it your own!)
-- ✅ 100/100 Lighthouse performance
-- ✅ SEO-friendly with canonical URLs and OpenGraph data
-- ✅ Sitemap support
-- ✅ RSS Feed support
-- ✅ Markdown & MDX support
+3) Create a `.env` file in the project root (see the next section).
 
-## 🚀 Project Structure
+4) Start the dev server:
 
-Inside of your Astro project, you'll see the following folders and files:
+```bash
+pnpm dev
+```
+
+Then open `http://localhost:4321`.
+
+## Environment variables
+
+### Required (only if you want see comments)
+
+- `PUBLIC_SUPABASE_URL`
+- `PUBLIC_SUPABASE_ANON_KEY`
+
+Example `.env`:
+
+```bash
+PUBLIC_SUPABASE_URL="https://YOUR_PROJECT_ID.supabase.co"
+PUBLIC_SUPABASE_ANON_KEY="YOUR_ANON_KEY"
+```
+
+## Commands
+
+All commands are run from the project root:
+
+| Command | What it does |
+| --- | --- |
+| `pnpm dev` | Start the dev server |
+| `pnpm build` | Build the production site to `dist/` |
+| `pnpm preview` | Preview the production build locally |
+| `pnpm astro ...` | Run Astro CLI commands |
+
+## Writing a new blog post
+
+Posts live under `src/content/`. The folder name becomes the URL slug. If your folder's name is `linux-basics` the URL for you blog will be `https://blog.lugvitc.net/linux-basics`. Your blog content must be in `index.md` or `index.mdx` files inside your folder. Images referenced in the blog post must be placed in the same folder, including the cover/hero image.
+
+### 1) Create a new post folder
+
+Create a new folder and an `index.md` inside it:
 
 ```text
-├── public/
-├── src/
-│   ├── components/
-│   ├── content/
-│   ├── layouts/
-│   └── pages/
-├── astro.config.mjs
-├── README.md
-├── package.json
-└── tsconfig.json
+src/content/my-new-post/index.md
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+### 2) Add frontmatter
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+Minimum recommended frontmatter:
 
-The `src/content/` directory contains "collections" of related Markdown and MDX documents. Use `getCollection()` to retrieve posts from `src/content/blog/`, and type-check your frontmatter using an optional schema. See [Astro's Content Collections docs](https://docs.astro.build/en/guides/content-collections/) to learn more.
+```yaml
+---
+title: "My New Post"
+description: "A small description"
+author: "Your Name"
+heroImage: "./hero.jpg" # optional
+---
+```
 
-Any static assets, like images, can be placed in the `public/` directory.
+### 3) Add images (optional)
 
-## 🧞 Commands
+Example:
 
-All commands are run from the root of the project, from a terminal:
+```text
+src/content/my-new-post/
+    index.md
+    hero.jpg
+    diagram1.png
+    diagram2.jpg
+```
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `pnpm install`             | Installs dependencies                            |
-| `pnpm dev`             | Starts local dev server at `localhost:4321`      |
-| `pnpm build`           | Build your production site to `./dist/`          |
-| `pnpm preview`         | Preview your build locally, before deploying     |
-| `pnpm astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `pnpm astro -- --help` | Get help using the Astro CLI                     |
+### 4) Preview locally
 
-## 👀 Want to learn more?
+```bash
+pnpm dev
+```
 
-Check out [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+OR
 
-## Credit
-
-This theme is based off of the lovely [Bear Blog](https://github.com/HermanMartinus/bearblog/).
+```bash
+pnpm build
+pnpm preview
+```

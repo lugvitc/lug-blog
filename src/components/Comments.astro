@@ -1,3 +1,11 @@
+<script>
+  import { initComments } from '../lib/comments.ts';
+
+  initComments();
+
+  document.addEventListener('astro:after-swap', initComments);
+</script>
+
 <section class="comments-section">
 	<div class="header">
 		<span class="header-title">
@@ -5,28 +13,25 @@
 			Add A Comment
 		</span>
 
-		<a href="#" class="signin">
+		<button class="google-signin" onclick="handleSignInWithGoogle()">
 			<img src="/signin.svg" width="20" />
-			Sign in with google
-		</a>
+			Sign in with Google
+		</button>
+
+		<button class="signout-btn" onclick="handleSignOut()" style="display: none;">
+			Sign Out
+		</button>
 	</div>
 
 	<textarea class="comment-box"></textarea>
 
 	<div class="post-row">
-		<button class="post-btn">Post <img src="/post.svg" width="20" /></button
-		>
-	</div>
+        <button class="post-btn" onclick="window.createComment(window.location.pathname.split('/').filter(Boolean).join('/'), document.querySelector('.comment-box').value)">Post <img src="/post.svg" width="20" /></button>
+    </div>
 </section>
 
 <section class="comments-list">
-	<div class="comment">
-		<div class="avatar"></div>
-		<div class="comment-content">
-			<div class="comment-author">Penguin Syndicate Member</div>
-			<div class="comment-text">This is a comment.</div>
-		</div>
-	</div>
+	
 </section>
 
 <style>
@@ -55,20 +60,39 @@
 		font-size: 22px;
 	}
 
-	.signin {
+	.google-signin {
 		display: flex;
 		align-items: center;
+		justify-content: center;
 		gap: 8px;
 		background: #00c764;
 		color: black;
-		text-decoration: none;
-		padding: 4px 10px;
+		font-family: inherit;
+		cursor: pointer;
+		padding: 8px 16px;
 		box-shadow: 6px 6px black;
 	}
 
-	.signin:hover {
+	.google-signin:hover {
 		transform: translate(1px, 1px);
 		box-shadow: 4px 4px black;
+	}
+
+	.signout-btn {
+		background: #bf616a;
+		color: white;
+		border: 2px solid black;
+		padding: 8px 16px;
+		font-family: inherit;
+		cursor: pointer;
+		font-size: 14px;
+		box-shadow: 4px 4px black;
+		transition: all 0.1s;
+	}
+
+	.signout-btn:hover {
+		transform: translate(1px, 1px);
+		box-shadow: 2px 2px black;
 	}
 
 	.comment-box {
@@ -96,6 +120,8 @@
 		align-items: center;
 		gap: 8px;
 		background: #00a9f3;
+		font-family: inherit;
+		cursor: pointer;
 		border: none;
 		padding: 8px 20px;
 		font-size: 18px;
@@ -115,7 +141,7 @@
 		gap: 12px;
 	}
 
-	.comment {
+	:global(.comment) {
 		display: flex;
 		gap: 12px;
 		background: #636b7b;
@@ -126,7 +152,7 @@
 		color: white;
 	}
 
-	.avatar {
+	:global(.avatar) {
 		width: 48px;
 		height: 48px;
 		background: #d1d5db;
@@ -135,18 +161,22 @@
 		flex-shrink: 0;
 	}
 
-	.comment-content {
+	:global(.avatar img) {
+		border-radius: 0;
+	}
+
+	:global(.comment-content) {
 		display: flex;
 		flex-direction: column;
 		gap: 6px;
 	}
 
-	.comment-author {
+	:global(.comment-author) {
 		font-size: 14px;
 		color: #d1d5db;
 	}
 
-	.comment-text {
+	:global(.comment-text) {
 		font-size: 16px;
 	}
 
@@ -169,7 +199,7 @@
 			justify-content: center;
 		}
 
-		.signin {
+		.google-signin {
 			justify-content: center;
 		}
 
