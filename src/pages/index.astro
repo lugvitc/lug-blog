@@ -1,13 +1,13 @@
 ---
-import { Image } from 'astro:assets';
-import { getCollection } from 'astro:content';
-import BaseHead from '../components/BaseHead.astro';
-import Footer from '../components/Footer.astro';
-import FormattedDate from '../components/FormattedDate.astro';
-import Header from '../components/Header.astro';
-import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
-const posts = (await getCollection('blog')).sort(
-(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
+import { Image } from "astro:assets";
+import { getCollection } from "astro:content";
+import BaseHead from "../components/BaseHead.astro";
+import Footer from "../components/Footer.astro";
+import FormattedDate from "../components/FormattedDate.astro";
+import Header from "../components/Header.astro";
+import { SITE_DESCRIPTION, SITE_TITLE } from "../consts";
+const posts = (await getCollection("blog")).sort(
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
 );
 const [latestPost, ...otherPosts] = posts;
 const recentPosts = otherPosts.slice(0, 3);
@@ -15,113 +15,124 @@ const recentPosts = otherPosts.slice(0, 3);
 
 <!doctype html>
 <html lang="en">
-    <head>
-        <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
-<style>
-
-    main {
+  <head>
+    <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+    <style>
+      main {
         width: 980px;
         background-image: radial-gradient(white 1px, transparent 0);
         background-repeat: repeat;
-    }
-    section {
+      }
+      section {
         padding: 20px;
-    }
-    .card {
+      }
+      .card {
         box-shadow: 7px 7px 0px 0px var(--card-box-shadow);
         transition: transform 0.2s ease;
         background-color: var(--card-bg);
-    }
-    :root{
+      }
+      :root {
         --fs-section-title: clamp(1.8rem, 2.6vw, 3.2rem);
-        --fs-latest-title:  clamp(1.6rem, 2.2vw, 2.4rem);
-        --fs-card-title:    clamp(1.2rem, 1.4vw, 1.6rem);
-        --fs-desc:          1rem;
-        --fs-date:          0.95rem;
-    }
+        --fs-latest-title: clamp(1.6rem, 2.2vw, 2.4rem);
+        --fs-card-title: clamp(1.2rem, 1.4vw, 1.6rem);
+        --fs-desc: 1rem;
+        --fs-date: 0.95rem;
+      }
 
-
-    h3 {
+      h3 {
         font-size: var(--fs-section-title);
         margin: 0 0 1rem 0;
-    }
+      }
 
-    .latest-card .title {
+      .latest-card .title {
         font-size: var(--fs-latest-title);
         line-height: 1.1;
-    }
+      }
 
-    .posts-grid .title {
+      .posts-grid .title {
         font-size: var(--fs-card-title);
         line-height: 1.15;
-    }
+      }
 
-    .description {
+      .description {
         font-size: var(--fs-desc);
         line-height: 1.4;
         display: -webkit-box;
         -webkit-line-clamp: 3;
         -webkit-box-orient: vertical;
         overflow: hidden;
-    }
+      }
 
-    .date {
+      .date {
         font-size: var(--fs-date);
-    }
+      }
 
-    .posts-grid .content-text {
+      .posts-grid .content-text {
         padding: 0 1rem 1rem 1rem;
-    }
+      }
 
-    .latest-card .title { font-size: 2.369rem; }
+      .latest-card .title {
+        font-size: 2.369rem;
+      }
 
-    /* -------- Other posts: 3 in a row -------- */
+      /* -------- Other posts: 3 in a row -------- */
 
-    .posts-grid a {
+      .posts-grid a {
         display: block;
         text-decoration: none;
-    }
+      }
 
-    .posts-grid img {
+      .posts-grid img {
         width: 100%;
         height: auto;
         display: block;
         margin-bottom: 0.5rem;
         border-radius: 0px;
-    }
+      }
 
-    /* Hover behaviour like before */
-    .posts-grid li * {
+      /* Hover behaviour like before */
+      .posts-grid li * {
         transition: 0.2s ease;
-    }
-    .card:hover {
-        transform: scale(1.05) ;
-    }
+      }
+      .card:hover {
+        transform: scale(1.05);
+      }
 
-    /* -------- Responsive -------- */
-    @media (max-width: 980px) {
-        .posts-grid li { flex: 0 0 calc((100% - 2rem) / 2); }
-        .latest-card { flex-direction: column; }
-        .latest-img, .latest-content { width: 100%; }
-        .latest-card .title { font-size: 1.563rem; }
-    }
+      /* -------- Responsive -------- */
+      @media (max-width: 980px) {
+        .posts-grid li {
+          flex: 0 0 calc((100% - 2rem) / 2);
+        }
+        .latest-card {
+          flex-direction: column;
+        }
+        .latest-img,
+        .latest-content {
+          width: 100%;
+        }
+        .latest-card .title {
+          font-size: 1.563rem;
+        }
+      }
 
-    @media (max-width: 720px) {
-        .posts-grid li { flex: 0 0 100%; }
-    }
+      @media (max-width: 720px) {
+        .posts-grid li {
+          flex: 0 0 100%;
+        }
+      }
 
-    ul li .card {
+      ul li .card {
         box-shadow: 7px 7px 0px 0px var(--card-box-shadow);
         background-color: var(--card-bg);
-    }
-    ul li img {
+      }
+      ul li img {
         margin-bottom: 0.5rem;
         border-radius: 0px;
-    }
-    ul li a {
+      }
+      ul li a {
         display: block;
-    }
-    .title {
+      }
+      .title {
         margin: 0;
         color: var(--card-text-color);
         line-height: 1;
@@ -129,143 +140,155 @@ const recentPosts = otherPosts.slice(0, 3);
         white-space: nowrap;
         text-overflow: ellipsis;
         width: 100%;
-    }
-    .description {
+      }
+      .description {
         color: var(--card-text-color);
-    }
-    .date {
+      }
+      .date {
         margin: 0;
         color: var(--card-text-color);
-    }
-    
+      }
 
-    ul li .card:hover {
+      ul li .card:hover {
         scale: 1.05;
-    }
-    /* Featured latest post */
-    .latest-link {
+      }
+      /* Featured latest post */
+      .latest-link {
         display: block;
         text-decoration: none;
         margin-bottom: 1.5rem;
-    }
+      }
 
-    .latest-card {
+      .latest-card {
         display: flex;
         gap: 1rem;
         padding: 1rem;
         min-height: 10rem;
-    }
+      }
 
-    .latest-img {
+      .latest-img {
         width: 45%;
-    }
+      }
 
-    .latest-img img {
+      .latest-img img {
         width: 100%;
         height: auto;
         display: block;
         border-radius: 0px;
-    }
+      }
 
-    .latest-content {
+      .latest-content {
         width: 55%;
         display: flex;
         flex-direction: column;
         align-items: flex-start;
         min-width: 0;
-    }
+      }
 
-    /* Other posts - 3 per row */
-    .posts-grid {
+      /* Other posts - 3 per row */
+      .posts-grid {
         display: flex;
         flex-wrap: wrap;
         gap: 2rem;
         list-style: none;
         padding: 0;
         margin: 0;
-    }
+      }
 
-    .posts-grid li {
+      .posts-grid li {
         flex: 0 0 calc((100% - 4rem) / 3); /* 2 gaps = 4rem total */
         min-width: 0;
-    }
+      }
 
-
-    /* Responsive */
-    @media (max-width: 980px) {
+      /* Responsive */
+      @media (max-width: 980px) {
         .posts-grid li {
-            flex: 0 0 calc((100% - 2rem) / 2);
+          flex: 0 0 calc((100% - 2rem) / 2);
         }
         .latest-card {
-            flex-direction: column;
+          flex-direction: column;
         }
-        .latest-img, .latest-content {
-            width: 100%;
+        .latest-img,
+        .latest-content {
+          width: 100%;
         }
-    }
+      }
 
-    @media (max-width: 720px) {
+      @media (max-width: 720px) {
         .posts-grid li {
-            flex: 0 0 100%;
+          flex: 0 0 100%;
         }
-    }
+      }
+    </style>
+  </head>
+  <body>
+    <Header />
+    <main transition:animate="slide">
+      <section>
+        <h2>The LUGVITC Blog</h2>
+        <p>
+          The official Blogsite of LUGVITC and probably the most coolest one in
+          the VIT.
+        </p>
+        <h3>The latest blogs</h3>
+        <!-- Latest post (featured) -->
+        <a href={`/${latestPost.id}/`} class="latest-link">
+          <div class="card latest-card">
+            <div class="latest-img">
+              {
+                latestPost.data.heroImage && (
+                  <Image
+                    width={720}
+                    height={360}
+                    src={latestPost.data.heroImage}
+                    alt=""
+                  />
+                )
+              }
+            </div>
 
-</style>
-    </head>
-    <body>
-        <Header />
-        <main transition:animate="slide">
-            <section>
-                <h2>The LUGVITC Blog</h2>
-                <p>The official Blogsite of LUGVITC and probably the most coolest one in the VIT.</p>
-                <h3>The latest blogs</h3>
-                <!-- Latest post (featured) -->
-                <a href={`/${latestPost.id}/`} class="latest-link">
-                    <div class="card latest-card">
-                        <div class="latest-img">
-                            {latestPost.data.heroImage && (
-                            <Image width={720} height={360} src={latestPost.data.heroImage} alt="" />
-                            )}
-                        </div>
-
-                        <div class="latest-content">
-                            <h4 class="title">{latestPost.data.title}</h4>
-                            <p class="description">{latestPost.data.description}</p>
-                            <p class="date">
-                            <FormattedDate date={latestPost.data.pubDate} />
-                            </p>
-                        </div>
+            <div class="latest-content">
+              <h4 class="title">{latestPost.data.title}</h4>
+              <p class="description">{latestPost.data.description}</p>
+              <p class="date">
+                <FormattedDate date={latestPost.data.pubDate} />
+              </p>
+            </div>
+          </div>
+        </a>
+        <h3>Recent posts</h3>
+        <!-- Other posts (show only 3) -->
+        <ul class="posts-grid">
+          {
+            recentPosts.map((post) => (
+              <li>
+                <a href={`/${post.id}/`}>
+                  <div class="card">
+                    {post.data.heroImage && (
+                      <Image
+                        width={720}
+                        height={360}
+                        src={post.data.heroImage}
+                        alt=""
+                      />
+                    )}
+                    <div class="content-text">
+                      <h4 class="title">{post.data.title}</h4>
+                      <p class="description">{post.data.description}</p>
+                      <p class="date">
+                        <FormattedDate date={post.data.pubDate} />
+                      </p>
                     </div>
+                  </div>
                 </a>
-                <h3> Recent posts</h3>
-                <!-- Other posts (show only 3) -->
-                <ul class="posts-grid">
-                    {
-                    recentPosts.map((post) => (
-                    <li>
-                        <a href={`/${post.id}/`}>
-                            <div class="card">
-                                {post.data.heroImage && (
-                                <Image width={720} height={360} src={post.data.heroImage} alt="" />
-                                )}
-                                <div class="content-text">
-                                    <h4 class="title">{post.data.title}</h4>
-                                    <p class="description">{post.data.description}</p>
-                                    <p class="date">
-                                    <FormattedDate date={post.data.pubDate} />
-                                    </p>
-                                </div>
-                            </div>
-                        </a>
-                    </li>
-                    ))
-                    }
-                </ul>
+              </li>
+            ))
+          }
+        </ul>
 
-                <p><a href="/blogs/">View all blogs</a></p>
-
-            </section>
-        </main>
-        <Footer />
-    </body>
+        <p><a href="/blogs/">View all blogs</a></p>
+      </section>
+    </main>
+    <Footer />
+  </body>
 </html>

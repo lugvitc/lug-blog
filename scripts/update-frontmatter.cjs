@@ -1,6 +1,6 @@
-const fs = require('fs');
-const path = require('path');
-const matter = require('gray-matter');
+const fs = require("fs");
+const path = require("path");
+const matter = require("gray-matter");
 
 const [, , fileName, authorImage] = process.argv;
 
@@ -16,14 +16,16 @@ if (!fs.existsSync(filePath)) {
 }
 
 function formatDate(date) {
-  return date.toLocaleDateString('en-US', {
-    month: 'short',
-    day: '2-digit',
-    year: 'numeric'
-  }).replace(',', '');
+  return date
+    .toLocaleDateString("en-US", {
+      month: "short",
+      day: "2-digit",
+      year: "numeric",
+    })
+    .replace(",", "");
 }
 
-const raw = fs.readFileSync(filePath, 'utf8');
+const raw = fs.readFileSync(filePath, "utf8");
 const parsed = matter(raw);
 
 const now = formatDate(new Date());
@@ -38,4 +40,4 @@ if (data.pubDate) {
 
 const output = matter.stringify(parsed.content, data);
 
-fs.writeFileSync(filePath, output, 'utf8');
+fs.writeFileSync(filePath, output, "utf8");

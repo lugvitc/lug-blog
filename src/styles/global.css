@@ -1,77 +1,80 @@
 :root {
-	--accent: #fdfdfd;
-	--accent-dark: #000d8a;
-	--black: 0, 0, 0;
-	--gray: #3b4252;
-	--gray-light: 229, 233, 240;
-	--gray-dark: 34, 41, 57;
-	--gray-gradient: rgba(var(--gray-light), 50%), #fff;
-	--box-shadow: #000000;
-	--card-box-shadow: var(--box-shadow);
-	--color-orange: #FF7800;
-	--color-blue: #00A9F3;
-	--color-green: #00C764;
-	--color-border: #444;
-	--background-color: #EACB8B26;
-	--text-color: #000000;
-	--heading-color: #050505;
-	--header-border: #000000;
-	--footer-bg: #FFFCF8;
-	--header-bg: #FFFCF8;
-	--card-bg: #3B4252;
-	--card-text-color: #eaeaea;
+  --accent: #fdfdfd;
+  --accent-dark: #000d8a;
+  --black: 0, 0, 0;
+  --gray: #3b4252;
+  --gray-light: 229, 233, 240;
+  --gray-dark: 34, 41, 57;
+  --gray-gradient: rgba(var(--gray-light), 50%), #fff;
+  --box-shadow: #000000;
+  --card-box-shadow: var(--box-shadow);
+  --color-orange: #ff7800;
+  --color-blue: #00a9f3;
+  --color-green: #00c764;
+  --color-border: #444;
+  --background-color: #eacb8b26;
+  --text-color: #000000;
+  --heading-color: #050505;
+  --header-border: #000000;
+  --footer-bg: #fffcf8;
+  --header-bg: #fffcf8;
+  --card-bg: #3b4252;
+  --card-text-color: #eaeaea;
 }
 
 html.dark {
-	--background-color: #050505;
-	--heading-color: #EACB8B;
-	--footer-bg: #000100;
-	--header-bg: #000100;
-	--text-color: #eaeaea;
-	--header-border: #EACB8B;
-	--box-shadow: #636B7B;
-	--card-bg: #2d2d2d;
-	--card-text-color: var(--text-color);
-	--card-box-shadow: #eaca8bc1;
+  --background-color: #050505;
+  --heading-color: #eacb8b;
+  --footer-bg: #000100;
+  --header-bg: #000100;
+  --text-color: #eaeaea;
+  --header-border: #eacb8b;
+  --box-shadow: #636b7b;
+  --card-bg: #2d2d2d;
+  --card-text-color: var(--text-color);
+  --card-box-shadow: #eaca8bc1;
 }
 
 @font-face {
-    font-family: "Space Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
-		"Liberation Mono", "Courier New", monospace;
-	src: url("/fonts/SpaceMono-Regular.woff") format("woff");
-	font-weight: 400;
-	font-style: normal;
-	font-display: swap;
+  font-family:
+    "Space Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+    "Liberation Mono", "Courier New", monospace;
+  src: url("/fonts/SpaceMono-Regular.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
 }
 @font-face {
-    font-family: "Space Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
-		"Liberation Mono", "Courier New", monospace;
-	src: url("/fonts/SpaceMono-Bold.woff") format("woff");
-	font-weight: 700;
-	font-style: normal;
-	font-display: swap;
+  font-family:
+    "Space Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+    "Liberation Mono", "Courier New", monospace;
+  src: url("/fonts/SpaceMono-Bold.woff") format("woff");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
 }
 
 body {
-    font-family: "Space Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
-		"Liberation Mono", "Courier New", monospace;
-	margin: 0;
-	padding: 0;
-	text-align: left;
-	background-color: var(--background-color);
-	background-size: 100% 600px;
-	word-wrap: break-word;
-	overflow-wrap: break-word;
-	color: var(--text-color);
-	font-size: 20px;
-	line-height: 1.7;
+  font-family:
+    "Space Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+    "Liberation Mono", "Courier New", monospace;
+  margin: 0;
+  padding: 0;
+  text-align: left;
+  background-color: var(--background-color);
+  background-size: 100% 600px;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  color: var(--text-color);
+  font-size: 20px;
+  line-height: 1.7;
 }
 
 main {
-	width: 720px;
-	max-width: calc(100% - 2em);
-	margin: auto;
-	padding: 3em 1em;
+  width: 720px;
+  max-width: calc(100% - 2em);
+  margin: auto;
+  padding: 3em 1em;
 }
 h1,
 h2,
@@ -79,109 +82,110 @@ h3,
 h4,
 h5,
 h6 {
-	margin: 0 0 0.5rem 0;
-	color: var(--heading-color);
-	line-height: 1.2;
+  margin: 0 0 0.5rem 0;
+  color: var(--heading-color);
+  line-height: 1.2;
 }
 h1 {
-	font-size: 3.052em;
+  font-size: 3.052em;
 }
 h2 {
-	font-size: 2.441em;
+  font-size: 2.441em;
 }
 h3 {
-	font-size: 1.953em;
+  font-size: 1.953em;
 }
 h4 {
-	font-size: 1.563em;
+  font-size: 1.563em;
 }
 h5 {
-	font-size: 1.25em;
+  font-size: 1.25em;
 }
 strong,
 b {
-	font-weight: 700;
+  font-weight: 700;
 }
 a {
-	color: var(--accent);
+  color: var(--accent);
 }
 a:hover {
-	color: var(--accent);
+  color: var(--accent);
 }
 p {
-	margin-bottom: 1em;
+  margin-bottom: 1em;
 }
 .prose p {
-	margin-bottom: 2em;
+  margin-bottom: 2em;
 }
 textarea {
-	width: 100%;
-	font-size: 16px;
+  width: 100%;
+  font-size: 16px;
 }
 input {
-	font-size: 16px;
+  font-size: 16px;
 }
 table {
-	width: 100%;
+  width: 100%;
 }
 img {
-	max-width: 100%;
-	height: auto;
-	border-radius: 8px;
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
 }
 :not(pre) > code {
-	padding: 2px 5px;
-	background-color: rgb(var(--gray-light));
-	border-radius: 2px;
+  padding: 2px 5px;
+  background-color: rgb(var(--gray-light));
+  border-radius: 2px;
 }
 
 html.dark :not(pre) > code {
-	background-color: rgb(var(--gray-dark));
+  background-color: rgb(var(--gray-dark));
 }
 pre {
-	padding: 1.5em;
-	border-radius: 8px;
+  padding: 1.5em;
+  border-radius: 8px;
 }
 pre > code {
-	all: unset;
+  all: unset;
 }
 blockquote {
-	border-left: 4px solid var(--accent);
-	padding: 0 0 0 20px;
-	margin: 0;
-	font-size: 1.333em;
+  border-left: 4px solid var(--accent);
+  padding: 0 0 0 20px;
+  margin: 0;
+  font-size: 1.333em;
 }
 hr {
-	border: none;
-	border-top: 1px solid rgb(var(--gray-light));
+  border: none;
+  border-top: 1px solid rgb(var(--gray-light));
 }
 @media (max-width: 720px) {
-	body {
-		font-size: 18px;
-	}
-	main {
-		padding: 1em;
-	}
+  body {
+    font-size: 18px;
+  }
+  main {
+    padding: 1em;
+  }
 }
 
 .sr-only {
-	border: 0;
-	padding: 0;
-	margin: 0;
-	position: absolute !important;
-	height: 1px;
-	width: 1px;
-	overflow: hidden;
-	/* IE6, IE7 - a 0 height clip, off to the bottom right of the visible 1px box */
-	clip: rect(1px 1px 1px 1px);
-	/* maybe deprecated but we need to support legacy browsers */
-	clip: rect(1px, 1px, 1px, 1px);
-	/* modern browsers, clip-path works inwards from each corner */
-	clip-path: inset(50%);
-	/* added line to stop words getting smushed together (as they go onto separate lines and some screen readers do not understand line feeds as a space */
-	white-space: nowrap;
+  border: 0;
+  padding: 0;
+  margin: 0;
+  position: absolute !important;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+  /* IE6, IE7 - a 0 height clip, off to the bottom right of the visible 1px box */
+  clip: rect(1px 1px 1px 1px);
+  /* maybe deprecated but we need to support legacy browsers */
+  clip: rect(1px, 1px, 1px, 1px);
+  /* modern browsers, clip-path works inwards from each corner */
+  clip-path: inset(50%);
+  /* added line to stop words getting smushed together (as they go onto separate lines and some screen readers do not understand line feeds as a space */
+  white-space: nowrap;
 }
 
-.disable-transitions, .disable-transitions * {
-	transition: none !important;
+.disable-transitions,
+.disable-transitions * {
+  transition: none !important;
 }

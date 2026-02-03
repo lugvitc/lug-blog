@@ -15,22 +15,22 @@ The official blog of The Linux Club, VIT Chennai, built with Astro and Supabase
 
 ## Setup
 
-1) Clone the repository
+1. Clone the repository
 
 ```bash
 cd <folder of your choice on your PC>
 git clone https://github.com/lugvitc/lug-blog.git
 ```
 
-2) Install dependencies:
+2. Install dependencies:
 
 ```bash
 pnpm install
 ```
 
-3) Create a `.env` file in the project root (see the next section).
+3. Create a `.env` file in the project root (see the next section).
 
-4) Start the dev server:
+4. Start the dev server:
 
 ```bash
 pnpm dev
@@ -56,12 +56,12 @@ PUBLIC_SUPABASE_ANON_KEY="YOUR_ANON_KEY"
 
 All commands are run from the project root:
 
-| Command | What it does |
-| --- | --- |
-| `pnpm dev` | Start the dev server |
-| `pnpm build` | Build the production site to `dist/` |
-| `pnpm preview` | Preview the production build locally |
-| `pnpm astro ...` | Run Astro CLI commands |
+| Command          | What it does                         |
+| ---------------- | ------------------------------------ |
+| `pnpm dev`       | Start the dev server                 |
+| `pnpm build`     | Build the production site to `dist/` |
+| `pnpm preview`   | Preview the production build locally |
+| `pnpm astro ...` | Run Astro CLI commands               |
 
 ## Writing a new blog post
 

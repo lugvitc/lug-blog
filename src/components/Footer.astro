@@ -1,96 +1,92 @@
 ---
-import RSSIcon from '../assets/rss.svg';
+import RSSIcon from "../assets/rss.svg";
 ---
+
 <footer>
-	<div class = "cen">
-		<div class = "links">
-			<a href = "https://lugvitc.net/#/about" target="_blank">About us</a>
-			<a href = "https://lugvitc.net/#/contact" target="_blank">Contact us</a>
-			<a href = "/rss.xml" target="_blank">RSS <RSSIcon /></a>
-		</div>
-		<p class = "copyright">
-  			© 2025 LUGVITC. All rights reserved.
-		</p>
-	</div>
-	
+  <div class="cen">
+    <div class="links">
+      <a href="https://lugvitc.net/#/about" target="_blank">About us</a>
+      <a href="https://lugvitc.net/#/contact" target="_blank">Contact us</a>
+      <a href="/rss.xml" target="_blank">RSS <RSSIcon /></a>
+    </div>
+    <p class="copyright">© 2025 LUGVITC. All rights reserved.</p>
+  </div>
 </footer>
 
 <style>
-	.cen{
-		font-family: monospace;
-		background-color: var(--footer-bg);
-		color:var(--text-color);
-		padding:0.4rem 1.5rem;
-		display:flex;
-		gap:0.1rem;
-		flex-direction:column;
-		border-top: 4px solid var(--header-border);
-		padding-top: 2rem;
-	}
+  .cen {
+    font-family: monospace;
+    background-color: var(--footer-bg);
+    color: var(--text-color);
+    padding: 0.4rem 1.5rem;
+    display: flex;
+    gap: 0.1rem;
+    flex-direction: column;
+    border-top: 4px solid var(--header-border);
+    padding-top: 2rem;
+  }
 
-	.links{
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		gap: 3rem;
-	}
-	.links a{
-		display:inline-flex;
-		height: 20px;
-		border:2px solid var(--color-border);
-		color:black;
-		font-weight:bold;
-		padding:1rem 1.5rem;
-		border-radius:1px;
-		text-decoration:none;
-		align-items:center;
-		gap:0.4rem;
-		line-height:1;
-		font-family: 'Space Mono', monospace;
-		box-shadow:
-		6px 6px 0 var(--box-shadow),                 
-		0 0 0 1px rgba(0,0,0,0.4); 
-		transition:
-		transform 0.15s ease-out,
-    	box-shadow 0.15s ease-out;
-	}
+  .links {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 3rem;
+  }
+  .links a {
+    display: inline-flex;
+    height: 20px;
+    border: 2px solid var(--color-border);
+    color: black;
+    font-weight: bold;
+    padding: 1rem 1.5rem;
+    border-radius: 1px;
+    text-decoration: none;
+    align-items: center;
+    gap: 0.4rem;
+    line-height: 1;
+    font-family: "Space Mono", monospace;
+    box-shadow:
+      6px 6px 0 var(--box-shadow),
+      0 0 0 1px rgba(0, 0, 0, 0.4);
+    transition:
+      transform 0.15s ease-out,
+      box-shadow 0.15s ease-out;
+  }
 
-	a:nth-child(1){
-		background:var(--color-blue);
+  a:nth-child(1) {
+    background: var(--color-blue);
+  }
+  a:nth-child(2) {
+    background: var(--color-green);
+  }
+  a:nth-child(3) {
+    background: var(--color-orange);
+  }
+  .links a:hover {
+    transform: translate(2px, 2px);
+    box-shadow:
+      4px 4px 0 var(--box-shadow),
+      0 0 0 1px rgba(0, 0, 0, 0.4);
+  }
+  .copyright {
+    align-self: flex-end;
+  }
+  @media (max-width: 700px) {
+    .cen {
+      align-items: center;
+      align-self: center;
+      gap: 1rem;
+    }
+    .links {
+      margin-left: 0;
+      width: 40%;
+      flex-direction: column;
+      gap: 1rem;
+    }
 
-	}
-	a:nth-child(2){
-		background:var(--color-green);		
-	}
-	a:nth-child(3){
-		background:var(--color-orange);
-	}
-	.links a:hover{
-		 transform: translate(2px, 2px);
-		box-shadow:
-		4px 4px 0 var(--box-shadow),
-		0 0 0 1px rgba(0,0,0,0.4);
-	}
-	.copyright{
-	    align-self: flex-end;
-	}
-	@media (max-width: 700px) {
-		.cen {
-			align-items: center;
-			align-self: center;
-			gap:1rem;
-		}
-		.links{
-			margin-left:0;
-			width: 40%;
-			flex-direction: column;
-			gap:1rem;
-		}
-
-		.copyright {
-			align-self: center;
-			text-align: center;
-		}
-	}
-
+    .copyright {
+      align-self: center;
+      text-align: center;
+    }
+  }
 </style>
