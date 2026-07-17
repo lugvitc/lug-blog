@@ -65,7 +65,7 @@ All commands are run from the project root:
 
 ## Writing a new blog post
 
-Posts live under `src/content/`. The folder name becomes the URL slug. If your folder's name is `linux-basics` the URL for you blog will be `https://blog.lugvitc.net/linux-basics`. Your blog content must be in `index.md` or `index.mdx` files inside your folder. Images referenced in the blog post must be placed in the same folder, including the cover/hero image.
+Posts live under `src/content/`. The folder name becomes the URL slug. If your folder's name is `linux-basics` the URL for you blog will be `https://blog.lugvitc.tech/linux-basics`. Your blog content must be in `index.md` or `index.mdx` files inside your folder. Images referenced in the blog post must be placed in the same folder, including the cover/hero image.
 
 ### 1) Create a new post folder
 
