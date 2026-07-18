@@ -1,5 +1,8 @@
 ---
 import RSSIcon from "../assets/rss.svg";
+import ArrowPrev from "../assets/arrow_prev.svg"
+import ArrowNext from "../assets/arrow_next.svg"
+import RandomDie from "../assets/random_die.svg"
 ---
 
 <footer>
@@ -8,6 +11,11 @@ import RSSIcon from "../assets/rss.svg";
       <a href="https://lugvitc.tech/#/about" target="_blank">About us</a>
       <a href="https://lugvitc.tech/#/contact" target="_blank">Contact us</a>
       <a href="/rss.xml" target="_blank">RSS <RSSIcon /></a>
+    </div>
+    <div class="links webring">
+      <a href="https://webring-vit.vercel.app/redirect?from=lugvitc&dir=prev" target="_blank"><ArrowPrev class="icon"/>VIT Webring</a>
+      <a href="https://webring-vit.vercel.app/random" target="_blank"><RandomDie class="icon"/></a>
+      <a href="https://webring-vit.vercel.app/redirect?from=lugvitc&dir=next" target="_blank">VIT Webring <ArrowNext class="icon"/></a>
     </div>
     <p class="copyright">© 2025 LUGVITC. All rights reserved.</p>
   </div>
@@ -20,7 +28,7 @@ import RSSIcon from "../assets/rss.svg";
     color: var(--text-color);
     padding: 0.4rem 1.5rem;
     display: flex;
-    gap: 0.1rem;
+    gap: 1.5rem;
     flex-direction: column;
     border-top: 4px solid var(--header-border);
     padding-top: 2rem;
@@ -30,8 +38,9 @@ import RSSIcon from "../assets/rss.svg";
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 3rem;
+    gap: 5rem;
   }
+
   .links a {
     display: inline-flex;
     height: 20px;
@@ -53,6 +62,18 @@ import RSSIcon from "../assets/rss.svg";
       box-shadow 0.15s ease-out;
   }
 
+  .webring a {
+    background: var(--card-bg);
+    color: var(--card-text-color);
+    box-shadow:
+      6px 6px 0 var(--card-box-shadow),
+      0 0 0 1px rgba(0, 0, 0, 0.4);
+  }
+
+  .icon {
+    color: var(--card-text-color)
+  }
+
   a:nth-child(1) {
     background: var(--color-blue);
   }
@@ -62,6 +83,7 @@ import RSSIcon from "../assets/rss.svg";
   a:nth-child(3) {
     background: var(--color-orange);
   }
+
   .links a:hover {
     transform: translate(2px, 2px);
     box-shadow:
