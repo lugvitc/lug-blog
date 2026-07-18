@@ -1,19 +1,60 @@
 ---
-title: "First post"
-author: "Tux"
-description: "Lorem ipsum dolor sit amet"
-pubDate: "Jul 08 2022"
+title: "Connect to college WiFi using nmtui or networkmanager"
+description: "Connecting to college WiFi"
+pubDate: 2026-01-13
+author: "ebits (Amiitesh)"
 heroImage: "./blog-placeholder-3.jpg"
 ---
 
-# Lorem Ipsum
+## Connecting to college WiFi using nmtui
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Vitae ultricies leo integer malesuada nunc vel risus commodo viverra. Adipiscing enim eu turpis egestas pretium. Euismod elementum nisi quis eleifend quam adipiscing. In hac habitasse platea dictumst vestibulum. Sagittis purus sit amet volutpat. Netus et malesuada fames ac turpis egestas. Eget magna fermentum iaculis eu non diam phasellus vestibulum lorem. Varius sit amet mattis vulputate enim. Habitasse platea dictumst quisque sagittis. Integer quis auctor elit sed vulputate mi. Dictumst quisque sagittis purus sit amet.
+**Step 1:** Open a terminal and run `nmtui` and in the selection navigate to `activate a connection`
+![nmtui_start](./nmtui_start.png)
 
-Morbi tristique senectus et netus. Id semper risus in hendrerit gravida rutrum quisque non tellus. Habitasse platea dictumst quisque sagittis purus sit amet. Tellus molestie nunc non blandit massa. Cursus vitae congue mauris rhoncus. Accumsan tortor posuere ac ut. Fringilla urna porttitor rhoncus dolor. Elit ullamcorper dignissim cras tincidunt lobortis. In cursus turpis massa tincidunt dui ut ornare lectus. Integer feugiat scelerisque varius morbi enim nunc. Bibendum neque egestas congue quisque egestas diam. Cras ornare arcu dui vivamus arcu felis bibendum. Dignissim suspendisse in est ante in nibh mauris. Sed tempus urna et pharetra pharetra massa massa ultricies mi.
+**Step 2:** From the list, select the WiFi you want to connect to.
 
-Mollis nunc sed id semper risus in. Convallis a cras semper auctor neque. Diam sit amet nisl suscipit. Lacus viverra vitae congue eu consequat ac felis donec. Egestas integer eget aliquet nibh praesent tristique magna sit amet. Eget magna fermentum iaculis eu non diam. In vitae turpis massa sed elementum. Tristique et egestas quis ipsum suspendisse ultrices. Eget lorem dolor sed viverra ipsum. Vel turpis nunc eget lorem dolor sed viverra. Posuere ac ut consequat semper viverra nam. Laoreet suspendisse interdum consectetur libero id faucibus. Diam phasellus vestibulum lorem sed risus ultricies tristique. Rhoncus dolor purus non enim praesent elementum facilisis. Ultrices tincidunt arcu non sodales neque. Tempus egestas sed sed risus pretium quam vulputate. Viverra suspendisse potenti nullam ac tortor vitae purus faucibus ornare. Fringilla urna porttitor rhoncus dolor purus non. Amet dictum sit amet justo donec enim.
+**Step 3:** You'll be taken to a screen similar to the one below:
+![nmtui_connection](./nmtui_connection.png)
 
-Mattis ullamcorper velit sed ullamcorper morbi tincidunt. Tortor posuere ac ut consequat semper viverra. Tellus mauris a diam maecenas sed enim ut sem viverra. Venenatis urna cursus eget nunc scelerisque viverra mauris in. Arcu ac tortor dignissim convallis aenean et tortor at. Curabitur gravida arcu ac tortor dignissim convallis aenean et tortor. Egestas tellus rutrum tellus pellentesque eu. Fusce ut placerat orci nulla pellentesque dignissim enim sit amet. Ut enim blandit volutpat maecenas volutpat blandit aliquam etiam. Id donec ultrices tincidunt arcu. Id cursus metus aliquam eleifend mi.
+**Step 4:** Verify that the SSID matches the network you want to connect to, then configure the settings below:
+- Authentication -> PEAP (Protected PEAP)
+- Anonymous Identity -> Nil
+- Domain -> Nil
+- CA cert -> Nil
+- CA cert password -> Nil
+- Inner authentication -> MSCHAPV2
 
-Tempus quam pellentesque nec nam aliquam sem. Risus at ultrices mi tempus imperdiet. Id porta nibh venenatis cras sed felis eget velit. Ipsum a arcu cursus vitae. Facilisis magna etiam tempor orci eu lobortis elementum. Tincidunt dui ut ornare lectus sit. Quisque non tellus orci ac. Blandit libero volutpat sed cras. Nec tincidunt praesent semper feugiat nibh sed pulvinar proin gravida. Egestas integer eget aliquet nibh praesent tristique magna.
+**Step 5:** After configuring the settings as said below, enter your username and password and press enter.
+
+Following the above steps will get you connected to the college WiFi. If you feel difficult to connect through the terminal interface. Refer to GUI method below.
+
+## Connecting to college WiFi using NetworkManager GUI
+
+**Step 1:** Open the application -> **Advanced Network Configuration**
+
+![nmgui_start](./nmgui_start.png#small)
+
+**Step 2:** From the dropdown menu, Select WiFi and enter *Create...*
+
+![nmgui_start](./nmgui_image.png#small)
+
+**Step 2:** Under the *WiFi* tab, enter the name of the WiFi connection that you want to connect to in the SSID field.
+
+![nmgui_field](./nmgui_field.png#small)
+
+**Step 3:** Now after that go to the *WiFi Security* tab, you'll see a configuration window similar to the one below:
+![nmgui_connection](./nmgui_connection.png)
+
+**Step 4:** Under *WiFi Security*, check if SSID is the network you want to connect to under the *WiFi* tab and after that under the *WiFi Security* tab change the settings to the one below:
+- Security -> WPA/WPA2 Enterprise
+- Authentication -> PEAP (Protected PEAP)
+- Anonymous Identity -> Nil
+- Domain -> Nil
+- Check the "`No CA certificate is required`" checkbox
+- CA cert -> Nil
+- CA cert password -> Nil
+- Inner authentication -> MSCHAPV2
+
+**Step 5:** After configuring the settings as said below, enter your username and password and press enter.
+
+Following these steps will get you connected to the college WiFi
