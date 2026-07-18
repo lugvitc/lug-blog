@@ -32,15 +32,15 @@ Following the above steps will get you connected to the college WiFi. If you fee
 
 **Step 1:** Open the application -> **Advanced Network Configuration**
 
-![nmgui_start](./nmgui_start.png#small)
+![nmgui_start](./nmgui_start.png)
 
 **Step 2:** From the dropdown menu, Select WiFi and enter *Create...*
 
-![nmgui_start](./nmgui_image.png#small)
+![nmgui_start](./nmgui_image.png)
 
 **Step 2:** Under the *WiFi* tab, enter the name of the WiFi connection that you want to connect to in the SSID field.
 
-![nmgui_field](./nmgui_field.png#small)
+![nmgui_field](./nmgui_field.png)
 
 **Step 3:** Now after that go to the *WiFi Security* tab, you'll see a configuration window similar to the one below:
 ![nmgui_connection](./nmgui_connection.png)
